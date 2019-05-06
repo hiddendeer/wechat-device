@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "basics": "/pages/recommend/index",
+    "plugin": "/pages/read/index"
+  }
+}
