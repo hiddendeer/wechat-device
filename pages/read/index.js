@@ -66,5 +66,10 @@ Page({
         return false
       }
     }
+  },
+  searchCur:function(e){
+    wx.navigateTo({
+      url: '/pages/detail/index',
+    })
   }
 })

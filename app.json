@@ -4,7 +4,8 @@
     "pages/begin/login/login",
     "pages/recommend/index",
     "pages/read/index",
-    "pages/me/index/index"
+    "pages/me/index/index",
+    "pages/detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
