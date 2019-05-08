@@ -19,7 +19,7 @@ const formatNumber = n => {
 function request({ url, data, success, fail, complete, method = "GET" }) {
   // 开始请求
   url = 'http://47.92.38.55/cms/api/' + url;
-  console.log('ly_request:' + 'start:' + url);
+  console.log('start:' + url);
 
   // 获取本地保存的user_id加入到每次请求中
   var user_id = wx.getStorageSync('user_id');//本地取user_id

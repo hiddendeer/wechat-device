@@ -2,6 +2,7 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     recommendList:[],
+    heatList:[],
     cardCur: 0,
     bookUrl:'book',
     swiperList: [{
@@ -35,8 +36,10 @@ Page({
       url: 'book/?order=asc&limit=8&offset=0',
       method: 'GET',
       success: function (res) {
+
        that.setData({
-         recommendList:res.data
+         recommendList:res.data,
+         heatList:res.data
        });
       }
     });
