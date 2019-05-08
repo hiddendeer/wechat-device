@@ -16,19 +16,15 @@ const formatNumber = n => {
 
 // 封装微信的wx.request主要每次请求自动加上session_id
 // 这里有一个全局的API接口域名配置，如果需要更改找到url='http://127.0.0.1'修改即可
-function exam_request({ url, data, success, fail, complete, method = "GET" }) {
+function request({ url, data, success, fail, complete, method = "GET" }) {
   // 开始请求
-  url = 'http://localhost:7888/basic/web/index.php?r=' + url;
+  url = 'http://47.92.38.55/cms/api/' + url;
   console.log('ly_request:' + 'start:' + url);
 
-  // 获取本地保存的session_id加入到每次请求中
-  var session_id = wx.getStorageSync('user_id');//本地取存储的sessionID
+  // 获取本地保存的user_id加入到每次请求中
   var user_id = wx.getStorageSync('user_id');//本地取user_id
-  var header = { 'X-Requested-With': 'xmlhttprequest', 'Lingyun-Api': 'Lingyun-Api', 'content-type': 'application/x-www-form-urlencoded', 'Cookie': session_id, 'user-id': user_id }
+  var header = { 'X-Requested-With': 'xmlhttprequest', 'Reading-Api': 'Reading-Api', 'content-type': 'application/x-www-form-urlencoded', 'user-id': user_id }
 
-
-  // 发起请求
-  // console.log('session_id:' + session_id);
   wx.request({
     url: url,
     method: method,
@@ -36,11 +32,6 @@ function exam_request({ url, data, success, fail, complete, method = "GET" }) {
     header: header,
     dataType: 'json',
     success: res => {
-      if (session_id == "" || session_id == null) {
-        // 如果本地没有就说明第一次请求 把返回的session id 存入本地
-        wx.setStorageSync('PHPSESSID', res.data.session_id)
-      }
-      console.log(res)
 
       // 全局登陆提示
       if (res.data.login == '1') {
@@ -73,5 +64,5 @@ function exam_request({ url, data, success, fail, complete, method = "GET" }) {
 
 module.exports = {
   formatTime: formatTime,
-  exam_request: exam_request,
+  request: request,
 }

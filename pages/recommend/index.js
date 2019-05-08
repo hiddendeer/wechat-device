@@ -1,7 +1,9 @@
+var util = require('../../utils/util.js');
 Page({
   data: {
+    recommendList:[],
     cardCur: 0,
-    submitUrl:'user/info',
+    bookUrl:'book',
     swiperList: [{
       id: 0,
       type: 'image',
@@ -25,9 +27,22 @@ Page({
     })
   },
   onLoad() {
-    this.towerSwiper('swiperList');
+    var that = this;
     // 初始化towerSwiper 传已有的数组名即可
-
+    that.towerSwiper('swiperList');
+    // var info = {}
+    util.request({
+      url: 'book/?order=asc&limit=8&offset=0',
+      method: 'GET',
+      success: function (res) {
+       that.setData({
+         recommendList:res.data
+       });
+      }
+    });
+  },
+  onReady:function(){
+  
   },
   DotStyle(e) {
     this.setData({
