@@ -1,11 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/begin/login/login",
     "pages/recommend/index",
     "pages/read/index",
     "pages/me/index/index",
-    "pages/detail/index"
+    "pages/me/info/index",
+    "pages/detail/index/index",
+    "pages/detail/search/index",
+    "pages/detail/reading/index",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

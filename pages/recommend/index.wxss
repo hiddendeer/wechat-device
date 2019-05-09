@@ -14,7 +14,7 @@
 }
 
 .scrollPage {
-  height: 227vh;
+  height: 95vh;
 }
 
 

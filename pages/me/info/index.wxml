@@ -1,0 +1,25 @@
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">个人资料</view>
+</cu-custom>
+<view class='content'>
+  <view class="cu-form-group">
+    <view class="title">姓名</view>
+    <input placeholder="请填写姓名"></input>
+  </view>
+ 	<view class="cu-form-group">
+		<view class="title">性别</view>
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+			<view class="picker">
+				{{index}}
+			</view>
+		</picker>
+	</view>
+  <view class="cu-form-group">
+    <view class="title">常住地</view>
+    <input placeholder="请填写常住地"></input>
+  </view>
+</view>
+
+  <view class="cu-bar btn-group" style="margin-top:20px;">
+    <button class="cu-btn bg-green shadow-blur round">保存</button>
+  </view>

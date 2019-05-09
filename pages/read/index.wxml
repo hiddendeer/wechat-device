@@ -23,17 +23,19 @@
       </view>
       <block wx:for="{{item.books}}" wx:key="item.id">
         <view class="cu-list menu-avatar">
-          <view class="cu-item" style="height:88px">
-            <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);width:104rpx;height:133rpx;"></view>
+          <view class="cu-item" style="height:88px" data-id="{{item.id}}" bindtap='gotoDetail'>
+            <view class="cu-avatar radius lg" style="background-image:url({{item.logo}});width:104rpx;height:133rpx;">
+            
+            </view>
             <view class="content" style="width:calc(100% - 96rpx - 60rpx);">
               <view class="text-pink">
                 <text class="text-cut">{{item.name}}</text>
               </view>
               <view class="text-gray text-sm flex">
-                <text class="text-cut">江湖不是打打杀杀，而是人情世故江湖不是打打杀杀，而是人情世故</text>
+                <text class="text-cut">{{item.introduction}}</text>
               </view>
                      <view>
-            <view class="cu-tag bg-green light sm round">{{item.rep_name}}</view>
+            <view class="cu-tag bg-green light sm round">{{item.author}}</view>
           </view>
             </view>
           </view>

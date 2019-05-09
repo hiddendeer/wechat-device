@@ -7,8 +7,10 @@ Component({
     forksCount: 0,
     visitTotal: 0,
   },
+  btnInfo:function(e){
+    console.log(e)
+  },
   attached() {
-    console.log("success")
     let that = this;
     wx.showLoading({
       title: '数据加载中',

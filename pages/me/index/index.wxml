@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/about/about" hover-class="none">
+      <navigator class="content" url="/pages/me/info/index?id=1" hover-class="none">
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">个人资料</text>
       </navigator>

@@ -9,18 +9,18 @@
         <view wx:if="{{login}}" class="login_container">
           <view class="login_view">
             <text class="login_lable">账号：</text>
-            <input class="login_text" placeholder="请输入登录账号" bindinput="listenerUsernameInput" />
+            <input class="login_text" placeholder="请输入登录账号" bindinput="usernameInput" />
           </view>
           <view class="login_view">
             <text class="login_lable">密码：</text>
-            <input class="login_text" placeholder="请输入密码" password="true" bindinput="listenerPasswordInput" />
+            <input class="login_text" placeholder="请输入密码" password="true" bindinput="passwordInput" />
           </view>
           <view>
         <view class="box">
 
 
   <view class="cu-bar btn-group">
-    <button class="cu-btn bg-blue shadow-blur round">提交</button>
+    <button class="cu-btn bg-blue shadow-blur round" bindtap='submit'>提交</button>
   </view>
     <view class="cu-bar btn-group">
     <button class="cu-btn text-green line-green shadow" bindtap='btnRegister'>注册</button>

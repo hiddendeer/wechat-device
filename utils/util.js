@@ -16,9 +16,14 @@ const formatNumber = n => {
 
 // 封装微信的wx.request主要每次请求自动加上session_id
 // 这里有一个全局的API接口域名配置，如果需要更改找到url='http://127.0.0.1'修改即可
-function request({ url, data, success, fail, complete, method = "GET" }) {
+function request({ url, data, success, fail, complete, method = "GET",other_url }) {
   // 开始请求
-  url = 'http://47.92.38.55/cms/api/' + url;
+  if(url !== undefined){
+    url = 'http://47.92.38.55:3389/cms/api/' + url;
+  }else if(other_url !== undefined){
+    url = 'http://47.92.38.55:3389/' + other_url;
+  }
+
   console.log('start:' + url);
 
   // 获取本地保存的user_id加入到每次请求中

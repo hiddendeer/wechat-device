@@ -1,10 +1,10 @@
 var util = require('../../utils/util.js');
 Page({
   data: {
-    recommendList:[],
-    heatList:[],
+    recommendList: [],
+    heatList: [],
     cardCur: 0,
-    bookUrl:'book',
+    bookUrl: 'book',
     swiperList: [{
       id: 0,
       type: 'image',
@@ -12,13 +12,13 @@ Page({
     }, {
       id: 1,
       type: 'image',
-        url: '/images/banner02.jpeg',
+      url: '/images/banner02.jpeg',
     },
-      {
-        id: 2,
-        type: 'image',
-        url: '/images/banner02.jpeg',
-      }],
+    {
+      id: 2,
+      type: 'image',
+      url: '/images/banner02.jpeg',
+    }],
     // StatusBar: app.globalData.StatusBar,
     // CustomBar: app.globalData.CustomBar
   },
@@ -36,16 +36,22 @@ Page({
       url: 'book/?order=asc&limit=8&offset=0',
       method: 'GET',
       success: function (res) {
-
-       that.setData({
-         recommendList:res.data,
-         heatList:res.data
-       });
+        that.setData({
+          recommendList: res.data,
+          heatList: res.data
+        });
       }
     });
   },
-  onReady:function(){
-  
+  onReady: function () {
+
+  },
+  gotoDetail: function (e) {
+    //获取书籍id
+    let book_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/detail/index/index?book_id='+book_id,
+    })
   },
   DotStyle(e) {
     this.setData({

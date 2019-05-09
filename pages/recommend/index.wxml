@@ -15,7 +15,7 @@
 <view class='recommend-headr'>推荐</view>
 <block wx:for="{{recommendList}}" wx:key="item.id">
   <view class="cu-card article {{isCard?'no-card':''}}">
-    <view class="cu-item shadow">
+    <view class="cu-item shadow" data-id="{{item.id}}" bindtap='gotoDetail'>
       <view class="title">
         <view class="text-cut"></view>
       </view>
@@ -36,7 +36,7 @@
   </view>
 </block>
 
-  <view class='recommend-headr'>热度榜</view>
+  <!-- <view class='recommend-headr'>热度榜</view>
 
 <block wx:for="{{heatList}}" wx:key="item.id">
   <view class="cu-card article {{isCard?'no-card':''}}">
@@ -59,7 +59,7 @@
       </view>
     </view>
   </view>
-</block>
+</block> -->
  
 
 </scroll-view>

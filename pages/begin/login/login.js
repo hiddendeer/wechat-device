@@ -1,11 +1,13 @@
-// pages/begin/login/login.js
+var util = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    login: true
+    login: true,
+    usernameInput:'',
+    passwordInput:''
   },
 
   /**
@@ -20,6 +22,47 @@ Page({
    */
   onReady: function () {
 
+  },
+  usernameInput:function(e){
+    this.setData({
+      username:e.detail.value
+    });
+  },
+  passwordInput: function (e) {
+    this.setData({
+      password: e.detail.value
+    });
+  },
+  submit:function(){
+    var username = this.data.username;
+    var password = this.data.password;
+    var data = {"username":username,"password":password}
+    util.request({
+      other_url: 'admin/handerlogin/',
+      method: 'POST',
+      data: data,
+      success: function (res) {
+        console.log(res);
+        var res = res.data.error_code;
+        if (res !== 0) {
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success',
+            duration: 1000
+          })
+          wx.navigateTo({
+            url: '/pages/recommend/index'
+          })
+        } else {
+          wx.showToast({
+            title: '登录失败',
+            icon: 'fail',
+            duration: 1000
+          })
+        }
+      }
+
+    });
   },
 
   /**
