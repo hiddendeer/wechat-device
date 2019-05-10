@@ -17,6 +17,10 @@
       color: var(--orange);
       font-size: 43rpx;
   }
+  .user-score{
+     color: var(--orange);
+      font-size: 33rpx;
+  }
   
   .UCenter-bg text {
     opacity: 0.8;

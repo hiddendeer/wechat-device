@@ -1,3 +1,4 @@
+var util = require('../../../utils/util.js');
 Component({
   options: {
     addGlobalClass: true,
@@ -6,7 +7,9 @@ Component({
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
+    personInfo:{}
   },
+  
   btnInfo:function(e){
     console.log(e)
   },
@@ -39,6 +42,24 @@ Component({
     }
     wx.hideLoading()
   },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show() { 
+      var that = this;
+      var user_id = wx.getStorageSync('user_id');
+      util.request({
+        url:'user/'+user_id,
+        methods:'GET',
+        success:function(res){
+          that.setData({
+            personInfo:res.data
+          });
+        }
+      });
+    },
+    hide() { },
+    resize() { },
+  },
   methods: {
     coutNum(e) {
       if (e > 1000 && e < 10000) {
@@ -49,14 +70,30 @@ Component({
       }
       return e
     },
+    btnSign(e){
+      wx.showToast({
+        title: '今日已签到',
+        duration:1000
+      })
+    },
     CopyLink(e) {
+  
       wx.setClipboardData({
         data: e.currentTarget.dataset.link,
         success: res => {
           wx.showToast({
-            title: '已复制',
+            title: '已签到',
             duration: 1000,
-          })
+          });
+          var id = wx.getStorageSync('user_id');
+          var user_id = { "user_id": id }
+          util.request({
+            other_url:'web/api/sign_in/',
+            data:user_id,
+            method:'POST',
+            success:function(res){
+            }
+          });
         }
       })
     },

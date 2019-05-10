@@ -6,8 +6,8 @@ Page({
    */
   data: {
     login: true,
-    usernameInput:'',
-    passwordInput:''
+    usernameInput: '',
+    passwordInput: ''
   },
 
   /**
@@ -23,9 +23,9 @@ Page({
   onReady: function () {
 
   },
-  usernameInput:function(e){
+  usernameInput: function (e) {
     this.setData({
-      username:e.detail.value
+      username: e.detail.value
     });
   },
   passwordInput: function (e) {
@@ -33,27 +33,28 @@ Page({
       password: e.detail.value
     });
   },
-  submit:function(){
+  submit: function () {
     var username = this.data.username;
     var password = this.data.password;
-    var data = {"username":username,"password":password}
+    var data = { "username": username, "password": password }
     util.request({
       other_url: 'admin/handerlogin/',
       method: 'POST',
       data: data,
       success: function (res) {
         console.log(res);
-        var res = res.data.error_code;
-        if (res !== 0) {
+        var res = res.data;
+        if (res.msg_code == 1) {
           wx.showToast({
             title: '登录成功',
             icon: 'success',
             duration: 1000
-          })
-          wx.navigateTo({
+          });
+          wx.setStorageSync('user_id', res.user.id)
+          wx.switchTab({
             url: '/pages/recommend/index'
           })
-        } else {
+        } else if(res.error_code == 1) {
           wx.showToast({
             title: '登录失败',
             icon: 'fail',
@@ -116,7 +117,7 @@ Page({
       login: false
     })
   },
-  btnRegister:function(){
+  btnRegister: function () {
     wx.navigateTo({
       url: '../register/register',
     })

@@ -1,25 +1,32 @@
-<cu-custom bgColor="bg-gradual-blue">
-  <view slot="content">个人资料</view>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+ <view slot="backText" style='text-index:0;'>返回</view>
+  <view slot="content" style='text-index:0;'>个人资料</view>
 </cu-custom>
 <view class='content'>
   <view class="cu-form-group">
     <view class="title">姓名</view>
-    <input placeholder="请填写姓名"></input>
+    <input bindinput='firstnameInput' placeholder="{{info.first_name||name}}"></input>
   </view>
  	<view class="cu-form-group">
 		<view class="title">性别</view>
 		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
 			<view class="picker">
-				{{index}}
+      <block wx:if="{{info.sex == 1}}">
+      	男生
+      </block>
+        <block wx:elif="{{info.sex == 0}}">
+      	女生
+      </block>
+			
 			</view>
 		</picker>
 	</view>
   <view class="cu-form-group">
     <view class="title">常住地</view>
-    <input placeholder="请填写常住地"></input>
+    <input bindinput='addressInput' placeholder="{{info.address||addressInfo}}"></input>
   </view>
 </view>
 
   <view class="cu-bar btn-group" style="margin-top:20px;">
-    <button class="cu-btn bg-green shadow-blur round">保存</button>
+    <button class="cu-btn bg-green shadow-blur round" bindtap='submit'>保存</button>
   </view>

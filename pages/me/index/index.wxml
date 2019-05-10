@@ -6,19 +6,26 @@
   <view class="UCenter-bg" >
     <view class="text-xl">享受阅读</view>
     <view class="margin-top-sm">
-      <text class="user-info">By:丁明亮</text>
+      <text class="user-info">By:{{personInfo.first_name||personInfo.username}}</text>
+    </view>
+        <view class="margin-top-sm">
+      <text class="user-score">总积分:{{personInfo.integral}}分</text>
     </view>
     <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" wx:if="{{personInfo.sign_status == 0}}" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
         <text class="cuIcon-appreciatefill text-red"></text>
-        <text class="text-grey">积分签到</text>
+        <text class="text-grey" >积分签到</text>
+      </view>
+        <view class="content" wx:else bindtap="btnSign" data-link="https://github.com/weilanwl/ColorUI">
+        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="text-grey">已签到</text>
       </view>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/me/info/index?id=1" hover-class="none">
+      <navigator class="content" url="/pages/me/info/index" hover-class="none">
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">个人资料</text>
       </navigator>
@@ -26,7 +33,7 @@
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/log/log" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>
-        <text class="text-grey">关于</text>
+        <text class="text-grey">阅读历史</text>
       </navigator>
     </view>
   </view>
