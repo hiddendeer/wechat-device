@@ -2,24 +2,24 @@
   <view slot="content">我的</view>
 </cu-custom> -->
 <scroll-view scroll-y class="scrollPage">
-<!-- style="background-image:url(../../../images/bgcolors.jpg)" -->
-  <view class="UCenter-bg" >
+  <!-- style="background-image:url(../../../images/bgcolors.jpg)" -->
+  <view class="UCenter-bg">
     <view class="text-xl">享受阅读</view>
     <view class="margin-top-sm">
       <text class="user-info">By:{{personInfo.first_name||personInfo.username}}</text>
     </view>
-        <view class="margin-top-sm">
-      <text class="user-score">总积分:{{personInfo.integral}}分</text>
+    <view class="margin-top-sm">
+      <text class="user-score">总积分:{{score}}分</text>
     </view>
     <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item">
-      <view class="content" wx:if="{{personInfo.sign_status == 0}}" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" wx:if="{{sign_status == 0}}" bindtap="btnScore" data-link="https://github.com/weilanwl/ColorUI">
         <text class="cuIcon-appreciatefill text-red"></text>
-        <text class="text-grey" >积分签到</text>
+        <text class="text-grey">积分签到</text>
       </view>
-        <view class="content" wx:else bindtap="btnSign" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" wx:else bindtap="btnSign" data-link="https://github.com/weilanwl/ColorUI">
         <text class="cuIcon-appreciatefill text-red"></text>
         <text class="text-grey">已签到</text>
       </view>
@@ -31,11 +31,33 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+      <navigator class="content" url="/pages/me/history/index" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>
         <text class="text-grey">阅读历史</text>
       </navigator>
     </view>
+
+     <view class="cu-item arrow" bindtap="showModal" data-target="Modal">
+      <view class="content" hover-class="none">
+        <text class="cuIcon-creativefill text-orange"></text>
+        <text class="text-grey">关于</text>
+      </view>
+    </view>
+ 
   </view>
+
   <view class="cu-tabbar-height"></view>
 </scroll-view>
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">关于</view>
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close text-red"></text>
+        </view>
+      </view>
+      <view class="padding-xl">
+        <view>成贤学院--丁明亮</view>
+      </view>
+    </view>
+  </view>

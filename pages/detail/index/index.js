@@ -48,6 +48,10 @@ Page({
   onShow: function () {
 
   },
+  btnBack:function(){
+    console.log('111')
+  },
+
   btnNext:function(){
     var that = this;
     var bookList = that.data.bookList;

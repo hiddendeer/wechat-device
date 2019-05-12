@@ -7,7 +7,9 @@ Component({
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
-    personInfo:{}
+    personInfo:{},
+    score:'',
+    sign_status:0
   },
   
   btnInfo:function(e){
@@ -51,8 +53,12 @@ Component({
         url:'user/'+user_id,
         methods:'GET',
         success:function(res){
+          var score = res.data.integral;
+          var sign_status = res.data.sign_status;
           that.setData({
-            personInfo:res.data
+            personInfo:res.data,
+            score:score,
+            sign_status:sign_status
           });
         }
       });
@@ -76,24 +82,55 @@ Component({
         duration:1000
       })
     },
+    showModal(e){
+
+    },
+    btnScore:function(){
+      var that = this;
+      var id = wx.getStorageSync('user_id');
+      var user_id = { "user_id": id }
+      that.setData({
+        sign_status:1
+      });
+      util.request({
+        other_url: 'web/api/sign_in/',
+        data: user_id,
+        method: 'POST',
+        success: function (res) {
+          var score = that.data.score + 10;
+          that.setData({
+            score: score
+          });
+        }
+      });
+      wx.showToast({
+        title: '已签到',
+        duration: 1000,
+      });
+
+    },
     CopyLink(e) {
-  
       wx.setClipboardData({
         data: e.currentTarget.dataset.link,
         success: res => {
+          var id = wx.getStorageSync('user_id');
+          var user_id = { "user_id": id }
+          util.request({
+            other_url: 'web/api/sign_in/',
+            data: user_id,
+            method: 'POST',
+            success: function (res) {
+              var score = this.data.score + 10;
+              this.setData({
+                score: score
+              });
+            }
+          });
           wx.showToast({
             title: '已签到',
             duration: 1000,
           });
-          var id = wx.getStorageSync('user_id');
-          var user_id = { "user_id": id }
-          util.request({
-            other_url:'web/api/sign_in/',
-            data:user_id,
-            method:'POST',
-            success:function(res){
-            }
-          });
+     
         }
       })
     },

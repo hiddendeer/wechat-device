@@ -5,7 +5,7 @@
 <view class='content'>
   <view class="cu-form-group">
     <view class="title">姓名</view>
-    <input bindinput='firstnameInput' placeholder="{{info.first_name||name}}"></input>
+    <input bindinput='firstnameInput' placeholder="{{first_name||name}}"></input>
   </view>
  	<view class="cu-form-group">
 		<view class="title">性别</view>

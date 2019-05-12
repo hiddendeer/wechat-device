@@ -1,0 +1,16 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+ <view slot="backText">返回</view>
+  <view slot="content">阅读历史</view>
+</cu-custom>
+
+<view>
+  <block wx:for="{{history}}" wx:key="item.id">
+        <view class="cu-timeline">
+          <view class="cu-item">
+            <view class="content">
+              阅读 {{item.book_name}} {{item.chapter_title}}<view>{{item.read_time}}</view>
+            </view>
+          </view>
+        </view>
+        </block>
+</view>

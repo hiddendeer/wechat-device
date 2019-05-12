@@ -50,7 +50,7 @@ Page({
     //获取书籍id
     let book_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/detail/index/index?book_id='+book_id,
+      url: '/pages/detail/reading/index?book_id='+book_id,
     })
   },
   DotStyle(e) {

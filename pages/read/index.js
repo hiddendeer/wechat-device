@@ -9,7 +9,8 @@ Page({
     MainCur: 0,
     VerticalNavTop: 0,
     list: [],
-    load: true
+    load: true,
+    history:[]
   },
   onLoad() {
     var that = this;
@@ -52,7 +53,29 @@ Page({
     //获取书籍id
     let book_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/detail/index/index?book_id=' + book_id,
+      url: '/pages/detail/reading/index?book_id=' + book_id,
+      // url: '/pages/detail/index/index'
+    })
+  },
+  showModal(e) {
+    var that = this;
+    var user_id = wx.getStorageSync('user_id');
+    util.request({
+      other_url: 'web/api/get_read_historys/?user_id='+user_id,
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          history:res.data
+        });
+      }
+    });
+    that.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
     })
   },
   VerticalMain(e) {

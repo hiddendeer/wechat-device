@@ -1,15 +1,8 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
- <view slot="backText" style='text-index:0;'>返回</view>
-  <view slot="content" style='text-index:0;'>阅读</view>
+ <view slot="backText" style='text-index:0;' bindtap='btnBack'>返回</view>
+  <view slot="content" style='text-index:0;'>详情</view>
 </cu-custom>
-<view class='title'>
-  {{title}}
-</view>
-<import src="../../../wxParse/wxParse.wxml"/>
-<template is="wxParse" style="text-indent:23px;font-size:16px;" data="{{wxParseData:article.nodes}}"/>
-  <view class="cu-bar btn-group" style="margin-top:10px;" wx:if="{{btnBool}}">
-    <button class="cu-btn bg-blue shadow-blur round lg" bindtap='btnNext'>下一章</button>
-  </view>
+
 
 
 

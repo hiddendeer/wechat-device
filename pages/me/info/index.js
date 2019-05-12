@@ -53,8 +53,10 @@ Page({
       url: 'user/' + user_id,
       method: 'GET',
       success: function (res) {
+        var first_name = res.data.first_name;
         that.setData({
-          info:res.data
+          info:res.data,
+          first_name: first_name
         });
       }
     });
