@@ -6,7 +6,7 @@
   <view class="title">背景色选择</view>
   <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
     <view class="picker">
-      {{index?picker[index]:'点击选择背景颜色'}}
+      {{index?picker[index]:'点击背景颜色'}}
     </view>
   </picker>
 </view>
