@@ -19,9 +19,9 @@ const formatNumber = n => {
 function request({ url, data, success, fail, complete, method = "GET",other_url }) {
   // 开始请求
   if(url !== undefined){
-    url = 'http://47.92.38.55:3389/cms/api/' + url;
+    url = 'http://my.duald.cc:8099/cms/api/' + url;
   }else if(other_url !== undefined){
-    url = 'http://47.92.38.55:3389/' + other_url;
+    url = 'http://my.duald.cc:8099/' + other_url;
   }
 
   console.log('start:' + url);

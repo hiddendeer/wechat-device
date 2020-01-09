@@ -1,9 +1,9 @@
 <!-- <cu-custom bgColor="bg-gradual-blue">
   <view slot="content">我的</view>
 </cu-custom> -->
-<scroll-view scroll-y class="scrollPage">
+<scroll-view scroll-y class="scrollPage" >
   <!-- style="background-image:url(../../../images/bgcolors.jpg)" -->
-  <view class="UCenter-bg">
+  <view class="UCenter-bg" style="background-image:url(../../../images/bgcolors.jpg)">
     <view class="text-xl">享受阅读a</view>
     <view class="margin-top-sm">
       <text class="user-info">By:{{personInfo.first_name||personInfo.username}}</text>
