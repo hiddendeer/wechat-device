@@ -1,5 +1,22 @@
 @import "/colorui/main.wxss";
 @import "/colorui/icon.wxss";
+
+.device-content {
+  position: relative;
+  margin-top: 15%;
+
+}
+
+.project-name {
+  position: relative;
+  margin-top: 3%;
+}
+
+.btn-device {
+  position: relative;
+  margin-top: 10%;
+}
+
 .VerticalNav.nav {
   width: 200rpx;
   white-space: initial;

@@ -4,10 +4,10 @@
 </cu-custom>
 <view class='content'>
   <view class="cu-form-group">
-    <view class="title">姓名</view>
-    <input bindinput='firstnameInput' placeholder="{{first_name||name}}"></input>
+    <view class="title">称呼</view>
+    <input bindinput='firstnameInput' placeholder="{{full_name}}"></input>
   </view>
- 	<view class="cu-form-group">
+ 	<!-- <view class="cu-form-group">
 		<view class="title">性别</view>
 		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
 			<view class="picker">
@@ -20,13 +20,13 @@
 			
 			</view>
 		</picker>
-	</view>
-  <view class="cu-form-group">
+	</view> -->
+  <!-- <view class="cu-form-group">
     <view class="title">常住地</view>
     <input bindinput='addressInput' placeholder="{{info.address||addressInfo}}"></input>
-  </view>
+  </view> -->
 </view>
 
-  <view class="cu-bar btn-group" style="margin-top:20px;">
+  <!-- <view class="cu-bar btn-group" style="margin-top:20px;">
     <button class="cu-btn bg-green shadow-blur round" bindtap='submit'>保存</button>
-  </view>
+  </view> -->

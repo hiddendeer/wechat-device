@@ -1,0 +1,5 @@
+/* pages/me/system/index.wxss */
+.btn-logout {
+  position: relative;
+  margin-top: 30%;
+}

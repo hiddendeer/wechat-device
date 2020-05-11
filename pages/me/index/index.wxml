@@ -1,63 +1,84 @@
 <!-- <cu-custom bgColor="bg-gradual-blue">
   <view slot="content">我的</view>
 </cu-custom> -->
-<scroll-view scroll-y class="scrollPage" >
-  <!-- style="background-image:url(../../../images/bgcolors.jpg)" -->
-  <view class="UCenter-bg" style="background-image:url(../../../images/bgcolors.jpg)">
-    <view class="text-xl">享受阅读a</view>
-    <view class="margin-top-sm">
-      <text class="user-info">By:{{personInfo.first_name||personInfo.username}}</text>
-    </view>
-    <view class="margin-top-sm">
-      <text class="user-score">总积分:{{score}}分</text>
-    </view>
-    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
-  </view>
-  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item">
-      <view class="content" wx:if="{{sign_status == 0}}" bindtap="btnScore" data-link="https://github.com/weilanwl/ColorUI">
-        <text class="cuIcon-appreciatefill text-red"></text>
-        <text class="text-grey">积分签到</text>
-      </view>
-      <view class="content" wx:else bindtap="btnSign" data-link="https://github.com/weilanwl/ColorUI">
-        <text class="cuIcon-appreciatefill text-red"></text>
-        <text class="text-grey">已签到</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/me/info/index" hover-class="none">
-        <text class="cuIcon-writefill text-cyan"></text>
-        <text class="text-grey">个人资料</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/me/history/index" hover-class="none">
-        <text class="cuIcon-formfill text-green"></text>
-        <text class="text-grey">阅读历史</text>
-      </navigator>
-    </view>
+<scroll-view scroll-y class="scrollPage">
 
-     <view class="cu-item arrow" bindtap="showModal" data-target="Modal">
-      <view class="content" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
-        <text class="text-grey">关于</text>
-      </view>
-    </view>
- 
-  </view>
+	<view class="UCenter-bg" style="background-image:url(http://supplyforce0001.oss-cn-hangzhou.aliyuncs.com/sffiles/client120/SCM/%E5%85%AC%E5%91%8A/30C1D014-46D9-8334-CF58-1FFA8A2EA96A1588746901_3635bgcolors.jpg)">
 
-  <view class="cu-tabbar-height"></view>
+		<!-- 判断登录状态 -->
+		<block wx:if="{{sign_status==1}}">
+
+			<!-- 获取头像 -->
+			<view class="margin-top-sm">
+				<open-data type="userAvatarUrl" class="userinfo_avatar" id="userinfo"></open-data>
+			</view>
+
+			<view class="margin-top-sm">
+				<text class="user-info">您好:{{full_name||personInfo.nickName}}</text>
+			</view>
+
+	</block>
+	<block wx:else>
+					<view class="margin-top-sm">
+				<text class="wait-sign" bindtap="btnSignIn">点击登录</text>
+			</view>
+	</block>
+
+
+
+		<!-- <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
+	</view>
+	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/me/info/index" hover-class="none">
+				<text class="cuIcon-writefill text-cyan"></text>
+				<text class="text-grey">个人资料</text>
+			</navigator>
+		</view>
+
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/me/history/index" hover-class="none">
+				<text class="cuIcon-formfill text-green"></text>
+				<text class="text-grey">我的记录</text>
+			</navigator>
+		</view>
+
+				<view class="cu-item arrow">
+			<navigator class="content" url="/pages/me/message/index" hover-class="none">
+				<text class="cuIcon-creativefill text-orange"></text>
+				<text class="text-grey">我的消息</text>
+			</navigator>
+		</view>
+
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/me/system/index" hover-class="none">
+				<text class="cuIcon-github text-grey"></text>
+				<text class="text-grey">系统设置</text>
+			</navigator>
+		</view>
+
+		<view class="cu-item arrow" bindtap="showModal" data-target="Modal">
+			<view class="content" hover-class="none">
+				<text class="cuIcon-appreciatefill text-red"></text>
+				<text class="text-grey">关于</text>
+			</view>
+		</view>
+
+	</view>
+
+	<view class="cu-tabbar-height"></view>
 </scroll-view>
 <view class="cu-modal {{modalName=='Modal'?'show':''}}">
-    <view class="cu-dialog">
-      <view class="cu-bar bg-white justify-end">
-        <view class="content">关于</view>
-        <view class="action" bindtap="hideModal">
-          <text class="cuIcon-close text-red"></text>
-        </view>
-      </view>
-      <view class="padding-xl">
-        <view>成贤学院--丁明亮</view>
-      </view>
-    </view>
-  </view>
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">关于</view>
+			<view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="padding-xl">
+			<view>设备出入库记录小程序</view>
+		</view>
+	</view>
+</view>

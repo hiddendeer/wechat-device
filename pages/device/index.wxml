@@ -1,0 +1,35 @@
+<cu-custom bgColor="bg-gradual-blue">
+	<view slot="content">设备出入库记录</view>
+</cu-custom>
+
+<form>
+
+	<view class="device-content">
+		<view class="cu-form-group">
+			<view class="title">设备号</view>
+			<input placeholder="请点击添加按钮" bindinput="device_no" value="{{device_no}}"></input>
+			<button class="cu-btn bg-green shadow" bindtap="addDevice">添加</button>
+		</view>
+
+		<view class="padding bg-white solid-bottom">
+			<view class="cu-tag" wx:for="{{device_list}}" wx:key="key" wx:for-index="id" bindtap="delDevice" data-key="{{id}}">{{item}}
+      </view>
+		</view>
+
+		<view class="cu-form-group project-name">
+			<view class="title">项目名</view>
+			<input placeholder="请输入项目名称" bindinput="projectInput" value="{{project_name}}"></input>
+		</view>
+
+	</view>
+
+	<view class="cu-bar btn-group btn-device">
+		<button class="cu-btn bg-green shadow-blur round lg" bindtap="submit">出库</button>
+	</view>
+
+</form>
+
+
+<view class="VerticalBox">
+
+</view>

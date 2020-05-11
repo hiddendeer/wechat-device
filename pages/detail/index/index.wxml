@@ -1,8 +1,0 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
- <view slot="backText" style='text-index:0;' bindtap='btnBack'>返回</view>
-  <view slot="content" style='text-index:0;'>详情</view>
-</cu-custom>
-
-
-
-

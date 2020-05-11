@@ -14,6 +14,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //判断用户是否登录
+    const user_cache = wx.getStorageSync('user_cache');
+    if (user_cache !== '') {
+
+      var timestamp = Date.parse(new Date()).toString();
+      var timestamp_str = timestamp.replace(/(0+)$/g, "");
+      var timestamp_int = parseInt(timestamp_str);
+
+      if (timestamp_int > user_cache.expire) {
+        wx.removeStorageSync('user_cache');
+        wx.reLaunch({
+          url: '/pages/begin/login/login',
+        })
+      } else {
+        wx.switchTab({
+          url: '/pages/device/index',
+        })
+      }
+
+
+    }
 
   },
 
@@ -34,29 +55,56 @@ Page({
     });
   },
   submit: function () {
+
     var username = this.data.username;
     var password = this.data.password;
-    var data = { "username": username, "password": password }
+    console.log(username);
+    if (username =='' || username == undefined) {
+      
+      wx.showToast({
+        title: '账号必填',
+        icon: 'loading',
+        duration: 1000
+      });
+      return false;
+    }
+
+    if (password =='' || password == undefined ) {
+      wx.showToast({
+        title: '账号必填',
+        icon: 'loading',
+        duration: 1000
+      });
+      return false;
+    }
+
+    var data = {
+      "username": username,
+      "password": password
+    }
     util.request({
-      other_url: 'admin/handerlogin/',
+      url: 'sign-in/login',
       method: 'POST',
       data: data,
       success: function (res) {
-        console.log(res);
-        var res = res.data;
-        if (res.msg_code == 1) {
+        console.log(res, 333);
+        var res = res.data.data;
+
+
+        if (res.code == 200) {
           wx.showToast({
             title: '登录成功',
             icon: 'success',
             duration: 1000
           });
-          wx.setStorageSync('user_id', res.user.id)
+
+          wx.setStorageSync('user_cache', res.data)
           wx.switchTab({
-            url: '/pages/recommend/index'
+            url: '/pages/device/index'
           })
-        } else if(res.error_code == 1) {
+        } else {
           wx.showToast({
-            title: '登录失败',
+            title: res.message,
             icon: 'fail',
             duration: 1000
           })
@@ -64,6 +112,12 @@ Page({
       }
 
     });
+  },
+
+  btnCancel:function () {
+    wx.switchTab({
+      url: '/pages/device/index',
+    })
   },
 
   /**

@@ -1,0 +1,9 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+ <view slot="backText" style='text-index:0;'>返回</view>
+  <view slot="content" style='text-index:0;'>系统设置</view>
+</cu-custom>
+
+
+	<view class="cu-bar btn-group btn-device btn-logout">
+		<button class="cu-btn bg-green shadow-blur round lg" bindtap="logout">退出账号</button>
+	</view>

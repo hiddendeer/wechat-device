@@ -39,26 +39,36 @@ Page({
   twoPassword: function (e) {
     this.data.twopassword = e.detail.value;
   },
+  phone: function (e) {
+    this.data.phone = e.detail.value;
+  },
+  full_name: function (e) {
+    this.data.full_name = e.detail.value;
+  },
+
   submit: function () {
     var username = this.data.username;
     var password = this.data.password;
-    var twopassword = this.data.twopassword;
-    if (password !== twopassword) {
-      wx.showToast({
-        title: '密码不一致',
-        icon: 'loading',
-        duration: 1000
-      });
-      return false;
-    }
-    var data = { 'username': username, 'password': password };
+    var phone = this.data.phone;
+    var full_name = this.data.full_name;
+    // var twopassword = this.data.twopassword;
+    // if (password !== twopassword) {
+    //   wx.showToast({
+    //     title: '密码不一致',
+    //     icon: 'loading',
+    //     duration: 1000
+    //   });
+    //   return false;
+    // }
+    var data = { 'username': username, 'password': password,'phone': phone,'full_name': full_name };
     util.request({
-      other_url: 'web/api/submit_register/',
+      url: 'sign-up/register',
       method: 'POST',
       data: data,
       success: function (res) {
-        var res = res.data.error_code;
-        if (res == 0) {
+        var res = res.data.data;
+       
+        if (res.code == 200) {
           setTimeout(function(){
             wx.showToast({
               title: '注册成功',
@@ -66,16 +76,22 @@ Page({
               duration: 2000
             })
           },2000);
-    
-          wx.navigateTo({
+          
+          wx.reLaunch({
             url: '/pages/begin/login/login'
           })
         } else {
+          
           wx.showToast({
             title: '注册失败',
             icon: 'fail',
-            duration: 1000
+            duration: 3000
           })
+          
+          wx.reLaunch({
+            url: '/pages/begin/register/register'
+          })
+
         }
       }
 

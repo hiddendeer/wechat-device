@@ -2,7 +2,7 @@
   <view slot="content">注册</view>
 </cu-custom>
 <view class='header'>
-  <image class='header-img' src='/images/xiong.png'></image>
+  <image class='header-img' src='/images/device_banner.jpeg'></image>
 </view>
 
 <view class="login_container">
@@ -14,9 +14,17 @@
     <text class="login_lable">密码：</text>
     <input class="login_text" placeholder="请输入密码" password="true" bindinput="passwordInput" />
   </view>
-  <view class="login_view">
+  <!-- <view class="login_view">
     <text class="login_lable">密码：</text>
     <input class="login_text" placeholder="请再次输入密码" password="true" bindinput="twoPassword" />
+  </view> -->
+   <view class="login_view">
+    <text class="login_lable">手机号：</text>
+    <input class="login_text" placeholder="请输入手机号"  bindinput="phone" />
+  </view>
+     <view class="login_view">
+    <text class="login_lable">称呼</text>
+    <input class="login_text" placeholder="请输入称呼" bindinput="full_name" />
   </view>
   <view>
 

@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    // console.log(user_cache);
 
     // if (wx.cloud) {
     //   wx.cloud.init({
@@ -29,6 +30,7 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -55,7 +57,32 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
+
   },
+
+  /**
+   * 验证token过期时间，在需要的页面引入方法使用
+   */
+  validateToken:function() {
+    var user_cache = wx.getStorageSync('user_cache'); //本地取user_cache
+
+    if (user_cache !== '') {
+      
+      var timestamp = Date.parse(new Date()).toString();
+      var timestamp_str = timestamp.replace(/(0+)$/g, "");
+      var timestamp_int = parseInt(timestamp_str);
+      
+      if (timestamp_int > user_cache.expire) {
+        
+        wx.removeStorageSync('user_cache');
+        wx.reLaunch({
+          url: '/pages/begin/login/login',
+        })
+      }
+  
+    }
+  },
+
   globalData: {
     userInfo: null
   }

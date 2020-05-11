@@ -1,35 +1,18 @@
-var util = require('../../../utils/util.js');
+// pages/me/message/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    var user_cache = wx.getStorageSync('user_cache');
-    util.request({
-      url: "info/my-record-index" + "?token=" + user_cache.token + "&u_id=" + user_cache.id,
-      method: 'GET',
-      success: function (res) {
-        var res = res.data.data;
-        console.log(res);
 
-        if (res.data !== '') {
-          that.setData({
-            list: res.data
-          });
-
-        }
-
-      }
-    });
   },
 
   /**

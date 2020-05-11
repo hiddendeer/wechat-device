@@ -1,14 +1,12 @@
 {
   "pages": [
     "pages/begin/login/login",
-    "pages/recommend/index",
-    "pages/read/index",
     "pages/me/index/index",
     "pages/me/info/index",
-    "pages/detail/index/index",
-    "pages/detail/search/index",
-    "pages/detail/reading/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/device/index",
+    "pages/me/system/index",
+    "pages/me/message/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,14 +21,8 @@
     "selectedColor": "#39b54a",
     "list": [
       {
-        "pagePath": "pages/recommend/index",
-        "text": "首页",
-        "iconPath": "images/tabbar/basics.png",
-        "selectedIconPath": "images/tabbar/basics_cur.png"
-      },
-      {
-        "pagePath": "pages/read/index",
-        "text": "阅读",
+        "pagePath": "pages/device/index",
+        "text": "记录",
         "iconPath": "images/tabbar/plugin.png",
         "selectedIconPath": "images/tabbar/plugin_cur.png"
       },

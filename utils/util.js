@@ -16,19 +16,51 @@ const formatNumber = n => {
 
 // 封装微信的wx.request主要每次请求自动加上session_id
 // 这里有一个全局的API接口域名配置，如果需要更改找到url='http://127.0.0.1'修改即可
-function request({ url, data, success, fail, complete, method = "GET",other_url }) {
+function request({
+  url,
+  data,
+  success,
+  fail,
+  complete,
+  method = "GET"
+}) {
   // 开始请求
-  if(url !== undefined){
-    url = 'http://my.duald.cc:8099/cms/api/' + url;
-  }else if(other_url !== undefined){
-    url = 'http://my.duald.cc:8099/' + other_url;
-  }
-
+  var register_url = url;
+  url = 'https://www.hiddendeer.cn/device-api/web/' + url;
+  
   console.log('start:' + url);
 
-  // 获取本地保存的user_id加入到每次请求中
-  var user_id = wx.getStorageSync('user_id');//本地取user_id
-  var header = { 'X-Requested-With': 'xmlhttprequest', 'Reading-Api': 'Reading-Api', 'content-type': 'application/x-www-form-urlencoded', 'user-id': user_id }
+  // 判断本地存储的token过期，如过期则登出到登录页面
+  var user_cache = wx.getStorageSync('user_cache'); //本地取user_cache
+
+  if (user_cache !== '' && register_url !=='sign-up/register' ) {
+    
+    var timestamp = Date.parse(new Date()).toString();
+    var timestamp_str = timestamp.replace(/(0+)$/g, "");
+    var timestamp_int = parseInt(timestamp_str);
+    
+    if (timestamp_int > user_cache.expire) {
+      
+      wx.removeStorageSync('user_cache');
+      wx.reLaunch({
+        url: '/pages/begin/login/login',
+      })
+    }
+
+  } else {
+
+    wx.reLaunch({
+      url: '/pages/begin/login/login',
+    })
+
+  }
+
+
+  var header = {
+    'X-Requested-With': 'xmlhttprequest',
+    'Reading-Api': 'Reading-Api',
+    'content-type': 'application/x-www-form-urlencoded'
+  }
 
   wx.request({
     url: url,

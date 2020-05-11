@@ -1,16 +1,19 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
- <view slot="backText">返回</view>
-  <view slot="content">阅读历史</view>
+	<view slot="backText">返回</view>
+	<view slot="content">操作记录</view>
 </cu-custom>
 
 <view>
-  <block wx:for="{{history}}" wx:key="item.id">
-        <view class="cu-timeline">
-          <view class="cu-item">
-            <view class="content">
-              阅读 {{item.book_name}} {{item.chapter_title}}<view>{{item.read_time}}</view>
-            </view>
-          </view>
-        </view>
-        </block>
+	<block wx:for="{{list}}" wx:key="key">
+		<view class="cu-timeline">
+			<view class="cu-item">
+				<view class="content">
+					<view>所用设备：{{item.device_no}}</view>
+					<view>项目名：{{item.pro_name}}</view>
+					<view>操作内容：{{item.store_text}}</view>
+					<view>操作时间：{{item.create_time}}</view>
+				</view>
+			</view>
+		</view>
+	</block>
 </view>
